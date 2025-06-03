@@ -7,20 +7,29 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap');
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
+      position: relative; /* важно для абсолютного позиционирования внутри body */
       font-family: "Georgia", serif;
       background: #fdf8f4;
       color: #333;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body {
+      position: relative; /* для абсолютного позиционирования изображения */
     }
     header {
       background: #e7d4c0;
       text-align: center;
       padding: 60px 20px 40px;
       flex-shrink: 0;
+      position: relative;
+      z-index: 10;
     }
     header h1 {
       margin: 0;
@@ -37,6 +46,8 @@
       max-width: 900px;
       margin: 0 auto;
       flex-grow: 1;
+      position: relative;
+      z-index: 10;
     }
     .countdown {
       display: flex;
@@ -92,6 +103,8 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      position: relative;
+      z-index: 10;
     }
     .invite-frame {
       border: 3px solid #6a4e42;
@@ -107,6 +120,8 @@
       color: #6a4e42;
       background: #f8f1e7;
       line-height: 1.5;
+      position: relative;
+      z-index: 10;
     }
     .map-container {
       width: 100%;
@@ -115,6 +130,8 @@
       box-shadow: 0 0 15px rgba(106,78,66,0.2);
       border-radius: 10px;
       overflow: hidden;
+      position: relative;
+      z-index: 10;
     }
     .button-2gis {
       display: inline-block;
@@ -128,6 +145,8 @@
       box-shadow: 0 4px 8px rgba(0,67,173,0.4);
       margin-bottom: 40px;
       transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 10;
     }
     .button-2gis:hover {
       background: #002f75;
@@ -139,6 +158,8 @@
       margin-bottom: 40px;
       box-shadow: 0 0 15px rgba(179, 89, 0, 0.2);
       border-radius: 10px;
+      position: relative;
+      z-index: 10;
     }
     footer {
       text-align: center;
@@ -149,6 +170,8 @@
       flex-shrink: 0;
       background: #f8f1e7;
       user-select: none;
+      position: relative;
+      z-index: 10;
     }
     .lang-switch {
       position: fixed;
@@ -164,22 +187,23 @@
       font-family: 'Playfair Display', serif;
       box-shadow: 0 4px 10px rgba(106,78,66,0.5);
       transition: background-color 0.3s ease;
-      z-index: 10;
+      z-index: 20; /* выше, чтобы кнопка была сверху */
     }
     .lang-switch:hover {
       background: #4a3629;
     }
 
-    /* 🌟 Добавлено: Картинка в левом нижнем углу */
+    /* 🌟 Картинка в левом нижнем углу за всеми элементами */
     .corner-image {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 1400px; /* увеличенный размер */
-  opacity: 0.9;
-  z-index: 1;
-  pointer-events: none;
-}
+      position: fixed; /* фиксируем относительно окна браузера */
+      bottom: 0;
+      left: 0;
+      width: 1400px; /* увеличенный размер */
+      opacity: 0.9;
+      z-index: 0; /* очень низкий слой */
+      pointer-events: none; /* чтобы не мешать кликам */
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -214,118 +238,104 @@
 
   <div class="map-container">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.639210135816!2d76.85923081513722!3d43.15806677914647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388367b0651806ab%3A0x7ef2d597be061894!2z0JrQvtC70LDRhtCw!5e0!3m2!1sru!2skz!4v1685795600000!5m2!1sru!2skz"
-      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.639210135816!2d76.85923081513722!3d43.15806677914647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883697ef38fa1e7%3A0x39b2e60c7c9184a8!2sCrystal%20Hall%2C%20Erubaeva%208%2F9%2C%20Almaty!5e0!3m2!1sru!2skz!4v1685712345678!5m2!1sru!2skz"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Местоположение Crystal Hall"
+    ></iframe>
   </div>
 
-  <a class="button-2gis" href="https://2gis.kz/almaty/geo/70000001100579642" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a>
+  <a href="https://2gis.kz/almaty/firm/70000001016458514?m=76.86016%2C43.15866%2F17" target="_blank" class="button-2gis" rel="noopener noreferrer" id="button2gis">
+    Посмотреть на 2ГИС
+  </a>
 
   <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdI3o3xMLmY6azd8B7wGQLF3Kd8xexmX0ykQ0UXR2ZXhY7S6Q/viewform?embedded=true"
     class="rsvp-form"
-    src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
-    frameborder="0"
-    marginheight="0"
-    marginwidth="0">Загрузка…</iframe>
+    title="RSVP форма"
+  >
+    Загрузка формы…
+  </iframe>
 </main>
 
-<footer>
-  С нетерпением ждём встречи с вами! ❤️
-</footer>
-
-<!-- 🌟 Картинка в левом нижнем углу -->
 <img src="silhouettes.png" alt="Силуэты" class="corner-image" />
 
+<footer>
+  Спасибо, что вы с нами! ❤️
+</footer>
+
 <script>
-  let currentLang = 'ru';
-  const translations = {
-    ru: {
-      days: 'Дни',
-      hours: 'Часы',
-      minutes: 'Минуты',
-      seconds: 'Секунды',
-      inviteText: `В этот день две судьбы сливаются в одну,<br />
-                   И мы хотим, чтобы вы были рядом с нами.<br />
-                   Приглашаем вас на праздник любви, счастья и новых начал.<br />
-                   Пусть этот день останется в памяти навсегда!`,
-      datePlace: '📅 19 июля 2025 года<br />🕔 Сбор гостей в 17:00<br />📍 Crystal Hall, Алматы, ул. Ерубаева 8/9',
-      rsvpSrc: "https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true",
-      headerSubtitle: "С любовью приглашаем вас на нашу свадьбу",
-      footerText: "С нетерпением ждём встречи с вами! ❤️",
-      langBtnText: "Қазақша"
-    },
-    kz: {
-      days: 'Күндер',
-      hours: 'Сағаттар',
-      minutes: 'Минуталар',
-      seconds: 'Секундалар',
-      inviteText: `Осы күні екі тағдыр бірігіп,<br />
-                   Біз сіздерді жанымызда көргіміз келеді.<br />
-                   Сіздерді махаббат, бақыт және жаңа бастамалар тойына шақырамыз.<br />
-                   Бұл күн мәңгі есте қалсын!`,
-      datePlace: '📅 2025 жылғы 19 шілде<br />🕔 Қонақтарды жинау сағат 17:00<br />📍 Crystal Hall, Алматы, Ерубаева көшесі 8/9',
-      rsvpSrc: "https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true",
-      headerSubtitle: "Махаббатпен тойға шақырамыз",
-      footerText: "Сіздерді кездесуге асыға күтеміз! ❤️",
-      langBtnText: "Русский"
-    }
-  };
+  // Таймер обратного отсчёта до 19 июля 2025, 17:00
+  const countdown = () => {
+    const countDate = new Date('2025-07-19T17:00:00').getTime();
+    const now = new Date().getTime();
+    const gap = countDate - now;
 
-  const daysEl = document.getElementById('days');
-  const hoursEl = document.getElementById('hours');
-  const minutesEl = document.getElementById('minutes');
-  const secondsEl = document.getElementById('seconds');
-  const inviteTextEl = document.getElementById('inviteText');
-  const datePlaceEl = document.getElementById('datePlace');
-  const headerSubtitleEl = document.getElementById('header-subtitle');
-  const langToggleBtn = document.getElementById('langToggle');
-  const footerEl = document.querySelector('footer');
-  const rsvpFrame = document.querySelector('.rsvp-form');
-
-  function updateLabels() {
-    document.querySelectorAll('.countdown .label')[0].textContent = translations[currentLang].days;
-    document.querySelectorAll('.countdown .label')[1].textContent = translations[currentLang].hours;
-    document.querySelectorAll('.countdown .label')[2].textContent = translations[currentLang].minutes;
-    document.querySelectorAll('.countdown .label')[3].textContent = translations[currentLang].seconds;
-
-    inviteTextEl.innerHTML = translations[currentLang].inviteText;
-    datePlaceEl.innerHTML = translations[currentLang].datePlace;
-    headerSubtitleEl.textContent = translations[currentLang].headerSubtitle;
-    footerEl.textContent = translations[currentLang].footerText;
-    langToggleBtn.textContent = translations[currentLang].langBtnText;
-    rsvpFrame.src = translations[currentLang].rsvpSrc;
-  }
-
-  const weddingDate = new Date('2025-07-19T17:00:00');
-  function updateTimer() {
-    const now = new Date();
-    const diff = weddingDate - now;
-
-    if (diff <= 0) {
-      document.getElementById('countdown').textContent = currentLang === 'ru' ? 'Сейчас идёт торжество!' : 'Қазір той өтіп жатыр!';
-      clearInterval(timerInterval);
+    if (gap < 0) {
+      document.getElementById('countdown').innerHTML = '<div>Событие прошло</div>';
       return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
 
-    daysEl.textContent = days.toString().padStart(2, '0');
-    hoursEl.textContent = hours.toString().padStart(2, '0');
-    minutesEl.textContent = minutes.toString().padStart(2, '0');
-    secondsEl.textContent = seconds.toString().padStart(2, '0');
-  }
+    const days = Math.floor(gap / day);
+    const hours = Math.floor((gap % day) / hour);
+    const minutes = Math.floor((gap % hour) / minute);
+    const seconds = Math.floor((gap % minute) / second);
 
-  updateTimer();
-  const timerInterval = setInterval(updateTimer, 1000);
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  };
 
-  langToggleBtn.addEventListener('click', () => {
+  setInterval(countdown, 1000);
+  countdown();
+
+  // Переключение языков русский / казахский (пример простой замены текста)
+  const langToggle = document.getElementById('langToggle');
+
+  const texts = {
+    ru: {
+      headerSubtitle: 'С любовью приглашаем вас на нашу свадьбу',
+      inviteText: `В этот день две судьбы сливаются в одну,<br />
+        И мы хотим, чтобы вы были рядом с нами.<br />
+        Приглашаем вас на праздник любви, счастья и новых начал.<br />
+        Пусть этот день останется в памяти навсегда!`,
+      datePlace: '📅 19 июля 2025 года<br />🕔 Сбор гостей в 17:00<br />📍 Crystal Hall, Алматы, ул. Ерубаева 8/9',
+      button2gis: 'Посмотреть на 2ГИС',
+      langButton: 'Қазақша',
+    },
+    kz: {
+      headerSubtitle: 'Махаббатпен біздің тойға шақырамыз',
+      inviteText: `Осы күні екі тағдыр біріккен күн,<br />
+        Сіздерді жанымызда көргіміз келеді.<br />
+        Махаббат, бақыт және жаңа бастамалар тойына шақырамыз.<br />
+        Бұл күн мәңгі есте қалады!`,
+      datePlace: '📅 2025 жылғы 19 шілде<br />🕔 Қонақтарды қабылдау 17:00-де<br />📍 Crystal Hall, Алматы, Ерубаева 8/9',
+      button2gis: '2GIS-та қарау',
+      langButton: 'Русский',
+    }
+  };
+
+  let currentLang = 'ru';
+
+  langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'ru' ? 'kz' : 'ru';
-    updateLabels();
+    const t = texts[currentLang];
+    document.getElementById('header-subtitle').innerHTML = t.headerSubtitle;
+    document.getElementById('inviteText').innerHTML = t.inviteText;
+    document.getElementById('datePlace').innerHTML = t.datePlace;
+    langToggle.textContent = t.langButton;
+    document.getElementById('button2gis').textContent = t.button2gis;
   });
-
-  updateLabels();
 </script>
 
 </body>
