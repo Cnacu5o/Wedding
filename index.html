@@ -3,340 +3,278 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Олжас & Адина — Приглашение на свадьбу</title>
+  <title>Приглашение на свадьбу Олжас и Адина</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap');
-
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      position: relative; /* важно для абсолютного позиционирования внутри body */
-      font-family: "Georgia", serif;
-      background: #fdf8f4;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f4f0;
       color: #333;
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      overflow-x: hidden;
     }
-    body {
-      position: relative; /* для абсолютного позиционирования изображения */
-    }
-    header {
-      background: #e7d4c0;
-      text-align: center;
-      padding: 60px 20px 40px;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 10;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-      color: #6a4e42;
-    }
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
-    main {
-      padding: 40px 20px;
-      text-align: center;
+    .container {
       max-width: 900px;
       margin: 0 auto;
-      flex-grow: 1;
+      padding: 0 15px 40px;
       position: relative;
-      z-index: 10;
-    }
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
-      font-family: 'Playfair Display', serif;
-      color: #6a4e42;
-    }
-    .countdown > div {
-      background: #f8f1e7;
-      border: 3px solid #6a4e42;
-      border-radius: 20px;
-      padding: 15px 25px;
-      min-width: 90px;
-      font-weight: 700;
-      font-size: 3.5rem;
-      line-height: 1.1;
-      user-select: none;
-      cursor: default;
-      box-shadow: 0 4px 10px rgba(106,78,66,0.3);
-    }
-    .countdown span.label {
-      display: block;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-    }
-    .invite-box {
-      border: 3px solid #6a4e42;
-      border-radius: 15px;
-      padding: 25px 30px;
-      font-size: 1.5em;
-      font-weight: 600;
-      color: #6a4e42;
-      margin-bottom: 40px;
-      line-height: 1.5;
-      background: #f8f1e7;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      min-height: 140px;
-    }
-    .date-place {
-      font-size: 1.7em;
-      line-height: 2.2;
-      margin-bottom: 40px;
-      color: #4a3629;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 10;
-    }
-    .invite-frame {
-      border: 3px solid #6a4e42;
-      border-radius: 15px;
-      padding: 20px 30px;
-      margin-bottom: 40px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.5em;
-      color: #6a4e42;
-      background: #f8f1e7;
-      line-height: 1.5;
-      position: relative;
-      z-index: 10;
-    }
-    .map-container {
-      width: 100%;
-      height: 400px;
-      margin: 30px 0;
-      box-shadow: 0 0 15px rgba(106,78,66,0.2);
-      border-radius: 10px;
+      background: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
       overflow: hidden;
+    }
+    header {
+      padding: 20px 0 10px;
+      text-align: center;
       position: relative;
-      z-index: 10;
+      z-index: 2;
+    }
+    h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: #9b6d4c;
+    }
+    h2 {
+      margin-top: 5px;
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: #bb8f6a;
+    }
+    .corner-image {
+      max-width: 900px;
+      width: 100%;
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+      position: relative; /* не fixed */
+      z-index: 0;
+    }
+    main {
+      padding: 10px 0 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    #inviteText {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #5a3e2b;
+    }
+    #datePlace {
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #7d5a3c;
     }
     .button-2gis {
       display: inline-block;
-      background: #0043ad;
-      color: #fff;
+      margin-bottom: 25px;
+      padding: 12px 24px;
+      background-color: #4d90fe;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 25px;
       text-decoration: none;
-      padding: 14px 30px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 1.2em;
-      box-shadow: 0 4px 8px rgba(0,67,173,0.4);
-      margin-bottom: 40px;
       transition: background-color 0.3s ease;
       position: relative;
-      z-index: 10;
+      z-index: 2;
     }
     .button-2gis:hover {
-      background: #002f75;
+      background-color: #357ae8;
     }
-    .rsvp-form {
-      width: 100%;
-      height: 1000px;
-      border: none;
-      margin-bottom: 40px;
-      box-shadow: 0 0 15px rgba(179, 89, 0, 0.2);
-      border-radius: 10px;
+    .countdown {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #7a5230;
       position: relative;
-      z-index: 10;
+      z-index: 2;
+    }
+    #langToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      background-color: #bb8f6a;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      z-index: 3;
+    }
+    #langToggle:hover {
+      background-color: #9b6d4c;
+    }
+    iframe#map {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    iframe.rsvp-form {
+      width: 100%;
+      min-height: 500px;
+      border: none;
+      border-radius: 8px;
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
     }
     footer {
       text-align: center;
-      font-size: 1.8em;
-      color: #6a4e42;
-      font-family: 'Playfair Display', serif;
-      padding: 25px 10px;
-      flex-shrink: 0;
-      background: #f8f1e7;
-      user-select: none;
+      padding: 15px 0 30px;
+      font-size: 0.85rem;
+      color: #9b6d4c;
       position: relative;
-      z-index: 10;
-    }
-    .lang-switch {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #6a4e42;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-      box-shadow: 0 4px 10px rgba(106,78,66,0.5);
-      transition: background-color 0.3s ease;
-      z-index: 20; /* выше, чтобы кнопка была сверху */
-    }
-    .lang-switch:hover {
-      background: #4a3629;
+      z-index: 2;
     }
 
-    /* 🌟 Картинка в левом нижнем углу за всеми элементами */
-    .corner-image {
-      position: fixed; /* фиксируем относительно окна браузера */
-      bottom: 0;
-      left: 0;
-      width: 1400px; /* увеличенный размер */
-      opacity: 0.9;
-      z-index: 0; /* очень низкий слой */
-      pointer-events: none; /* чтобы не мешать кликам */
-      user-select: none;
+    /* Адаптив для мобильных */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      #inviteText, #datePlace {
+        font-size: 1rem;
+      }
+      .button-2gis {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+      .countdown {
+        font-size: 1rem;
+      }
+      iframe#map {
+        height: 220px;
+      }
+      iframe.rsvp-form {
+        min-height: 400px;
+      }
+      #langToggle {
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+      }
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <button id="langToggle">Қазақша</button>
 
-<button class="lang-switch" id="langToggle">Қазақша</button>
+    <img src="silhouettes.png" alt="Силуэты молодоженов" class="corner-image" />
 
-<header>
-  <h1>Олжас & Адина</h1>
-  <p id="header-subtitle">С любовью приглашаем вас на нашу свадьбу</p>
-</header>
+    <header>
+      <h1>Олжас &amp; Адина</h1>
+      <h2 id="header-subtitle">Приглашают на свадьбу</h2>
+    </header>
 
-<main>
-  <div class="countdown" id="countdown">
-    <div><span id="days">--</span><span class="label">Дни</span></div>
-    <div><span id="hours">--</span><span class="label">Часы</span></div>
-    <div><span id="minutes">--</span><span class="label">Минуты</span></div>
-    <div><span id="seconds">--</span><span class="label">Секунды</span></div>
+    <main>
+      <p id="inviteText">Мы будем очень рады видеть вас на нашем празднике!</p>
+      <p id="datePlace">19 июля 2025 года, 17:00<br />Алматы, ул. Ерубаева 8/9, банкетный зал Crystal Hall</p>
+
+      <a href="https://2gis.kz/almaty/firm/70000001063714867?m=76.934468%2C43.250093%2F16.32" target="_blank" rel="noopener noreferrer" class="button-2gis" id="button2gis">Посмотреть на 2ГИС</a>
+
+      <div class="countdown" id="countdown"></div>
+
+      <iframe
+        id="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d842.5944451130382!2d76.9338582396784!3d43.25026808324952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836c50a9dce257%3A0x97e370e3e6df1383!2z0YPQuy4g0JHQvtC70LjRhtGPINCf0L7QvNC10YDQvtC20LrQsCDQmNC-0YHQutC40L3QsNGPINCS0LXQutCw0Y8g0JDQu9C40LrQsA!5e0!3m2!1sru!2skz!4v1685798234806!5m2!1sru!2skz"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Карта банкетного зала Crystal Hall"
+      ></iframe>
+
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdbB3CqxS_2kFQ1bSRXK0oIw6QmURHrnEG2LSYpWJ0scY1fQw/viewform?embedded=true"
+        class="rsvp-form"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Форма RSVP"
+      >Загрузка формы…</iframe>
+    </main>
+
+    <footer>
+      © Олжас и Адина, 2025
+    </footer>
   </div>
 
-  <div class="invite-frame" id="inviteText">
-    В этот день две судьбы сливаются в одну,<br />
-    И мы хотим, чтобы вы были рядом с нами.<br />
-    Приглашаем вас на праздник любви, счастья и новых начал.<br />
-    Пусть этот день останется в памяти навсегда!
-  </div>
+  <script>
+    // Тексты для переключения языков
+    const texts = {
+      ru: {
+        headerSubtitle: "Приглашают на свадьбу",
+        inviteText: "Мы будем очень рады видеть вас на нашем празднике!",
+        datePlace: "19 июля 2025 года, 17:00<br />Алматы, ул. Ерубаева 8/9, банкетный зал Crystal Hall",
+        button2gis: "Посмотреть на 2ГИС",
+        langToggle: "Қазақша"
+      },
+      kz: {
+        headerSubtitle: "Үйлену тойына шақырады",
+        inviteText: "Біз сіздерді мерекемізге шақырудан қуаныштымыз!",
+        datePlace: "2025 жылғы 19 шілде, 17:00<br />Алматы, Ерубаева к-сі 8/9, Crystal Hall банкет залы",
+        button2gis: "2GIS-та қарау",
+        langToggle: "Русский"
+      }
+    };
 
-  <div class="date-place" id="datePlace">
-    📅 19 июля 2025 года<br />
-    🕔 Сбор гостей в 17:00<br />
-    📍 Crystal Hall, Алматы, ул. Ерубаева 8/9
-  </div>
+    let currentLang = 'ru';
 
-  <div class="map-container">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.639210135816!2d76.85923081513722!3d43.15806677914647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883697ef38fa1e7%3A0x39b2e60c7c9184a8!2sCrystal%20Hall%2C%20Erubaeva%208%2F9%2C%20Almaty!5e0!3m2!1sru!2skz!4v1685712345678!5m2!1sru!2skz"
-      width="100%"
-      height="400"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Местоположение Crystal Hall"
-    ></iframe>
-  </div>
+    const langToggleBtn = document.getElementById('langToggle');
+    const headerSubtitle = document.getElementById('header-subtitle');
+    const inviteText = document.getElementById('inviteText');
+    const datePlace = document.getElementById('datePlace');
+    const button2gis = document.getElementById('button2gis');
 
-  <a href="https://2gis.kz/almaty/firm/70000001016458514?m=76.86016%2C43.15866%2F17" target="_blank" class="button-2gis" rel="noopener noreferrer" id="button2gis">
-    Посмотреть на 2ГИС
-  </a>
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'ru' ? 'kz' : 'ru';
+      headerSubtitle.innerHTML = texts[currentLang].headerSubtitle;
+      inviteText.innerHTML = texts[currentLang].inviteText;
+      datePlace.innerHTML = texts[currentLang].datePlace;
+      button2gis.textContent = texts[currentLang].button2gis;
+      langToggleBtn.textContent = texts[currentLang].langToggle;
+    });
 
-  <iframe
-    src="https://docs.google.com/forms/d/e/1FAIpQLSdI3o3xMLmY6azd8B7wGQLF3Kd8xexmX0ykQ0UXR2ZXhY7S6Q/viewform?embedded=true"
-    class="rsvp-form"
-    title="RSVP форма"
-  >
-    Загрузка формы…
-  </iframe>
-</main>
+    // Таймер обратного отсчёта
+    const countdownEl = document.getElementById('countdown');
+    const weddingDate = new Date('2025-07-19T17:00:00');
 
-<img src="silhouettes.png" alt="Силуэты" class="corner-image" />
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+      if (diff <= 0) {
+        countdownEl.textContent = currentLang === 'ru' ? 'Свадьба уже состоялась!' : 'Той өтті!';
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
 
-<footer>
-  Спасибо, что вы с нами! ❤️
-</footer>
-
-<script>
-  // Таймер обратного отсчёта до 19 июля 2025, 17:00
-  const countdown = () => {
-    const countDate = new Date('2025-07-19T17:00:00').getTime();
-    const now = new Date().getTime();
-    const gap = countDate - now;
-
-    if (gap < 0) {
-      document.getElementById('countdown').innerHTML = '<div>Событие прошло</div>';
-      return;
+      countdownEl.textContent = `${days} дн ${hours.toString().padStart(2,'0')} ч ${minutes.toString().padStart(2,'0')} мин ${seconds.toString().padStart(2,'0')} с`;
     }
 
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-
-    const days = Math.floor(gap / day);
-    const hours = Math.floor((gap % day) / hour);
-    const minutes = Math.floor((gap % hour) / minute);
-    const seconds = Math.floor((gap % minute) / second);
-
-    document.getElementById('days').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-  };
-
-  setInterval(countdown, 1000);
-  countdown();
-
-  // Переключение языков русский / казахский (пример простой замены текста)
-  const langToggle = document.getElementById('langToggle');
-
-  const texts = {
-    ru: {
-      headerSubtitle: 'С любовью приглашаем вас на нашу свадьбу',
-      inviteText: `В этот день две судьбы сливаются в одну,<br />
-        И мы хотим, чтобы вы были рядом с нами.<br />
-        Приглашаем вас на праздник любви, счастья и новых начал.<br />
-        Пусть этот день останется в памяти навсегда!`,
-      datePlace: '📅 19 июля 2025 года<br />🕔 Сбор гостей в 17:00<br />📍 Crystal Hall, Алматы, ул. Ерубаева 8/9',
-      button2gis: 'Посмотреть на 2ГИС',
-      langButton: 'Қазақша',
-    },
-    kz: {
-      headerSubtitle: 'Махаббатпен біздің тойға шақырамыз',
-      inviteText: `Осы күні екі тағдыр біріккен күн,<br />
-        Сіздерді жанымызда көргіміз келеді.<br />
-        Махаббат, бақыт және жаңа бастамалар тойына шақырамыз.<br />
-        Бұл күн мәңгі есте қалады!`,
-      datePlace: '📅 2025 жылғы 19 шілде<br />🕔 Қонақтарды қабылдау 17:00-де<br />📍 Crystal Hall, Алматы, Ерубаева 8/9',
-      button2gis: '2GIS-та қарау',
-      langButton: 'Русский',
-    }
-  };
-
-  let currentLang = 'ru';
-
-  langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'ru' ? 'kz' : 'ru';
-    const t = texts[currentLang];
-    document.getElementById('header-subtitle').innerHTML = t.headerSubtitle;
-    document.getElementById('inviteText').innerHTML = t.inviteText;
-    document.getElementById('datePlace').innerHTML = t.datePlace;
-    langToggle.textContent = t.langButton;
-    document.getElementById('button2gis').textContent = t.button2gis;
-  });
-</script>
-
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
