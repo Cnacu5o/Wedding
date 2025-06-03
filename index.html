@@ -28,10 +28,65 @@
     section {
       padding: 40px 20px;
       text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
+    /* Пригласительный текст в рамке */
+    .invite-box {
+      border: 3px solid #6a4e42;
+      border-radius: 15px;
+      padding: 25px 30px;
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #6a4e42;
+      margin-bottom: 40px;
+      line-height: 1.4;
+      background: #f8f1e7;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+    }
+    .date-place {
+      font-size: 1.7em;
+      line-height: 2.2;
+      margin-bottom: 40px;
+      color: #4a3629;
+    }
+    /* Карта */
+    .map-container {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    iframe.map {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+    /* Кнопка 2ГИС */
+    .button-2gis {
+      display: inline-block;
+      background-color: #1d99f3;
+      color: white;
+      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.2em;
+      margin-bottom: 60px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px rgba(29,153,243,0.5);
+    }
+    .button-2gis:hover {
+      background-color: #1677d9;
+    }
+    /* Форма */
     .rsvp-form {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 80px;
     }
     iframe {
       width: 100%;
@@ -39,11 +94,14 @@
       border: none;
       border-radius: 12px;
     }
+    /* Финальный текст */
     footer {
       background: #e7d4c0;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
+      padding: 30px 20px;
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #6a4e42;
     }
   </style>
 </head>
@@ -54,14 +112,42 @@
   </header>
 
   <section>
-    <h2>Дата и место</h2>
-    <p>📅 19 июля 2025 года<br>🕔 Сбор гостей в 17:00<br>📍 Crystal Hall, Алматы, ул. Ерубаева 8/9</p>
+    <div class="invite-box">
+      Дорогие наши гости,<br />
+    В этот день две судьбы сливаются в одну,<br />
+  И мы хотим, чтобы вы были рядом с нами.<br />
+  Приглашаем вас на праздник любви, счастья и новых начал.<br />
+  Пусть этот день останется в памяти навсегда!
+</div>
+
+    <div class="date-place">
+      📅 19 июля 2025 года<br />
+      🕔 Сбор гостей в 17:00<br />
+      📍 Crystal Hall, Алматы, ул. Ерубаева 8/9
+    </div>
+
+    <div class="map-container">
+      <iframe
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.361064675641!2d76.93136231507254!3d43.24474297913852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388368d3041c2f07%3A0x3d7c5b223299fcee!2z0J7QvdGC0LDRgtC10YDQuNC90LAsINCc0L7QsdC70LjQutCw0YDRgtC-0LLQvtC00L7QvdCwINCc0L7RgdC60LjQuSDQtNC10LvRjNC60LDRjyDRgdC40L3QsNGPINGC0LDRgdGC0LUg0YHQtdC00L3QsNGPINC_0LDQv9C-0LvQsNGP!5e0!3m2!1sru!2skz!4v1685789923456!5m2!1sru!2skz"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <a class="button-2gis" href="https://2gis.kz/almaty/geo/70000001100579642" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a>
   </section>
 
   <section>
-    <h2>RSVP — Пожалуйста подтвердите присутствие :) </h2>
+    <h2> Пожауйлста подтвердите присутствие :) </h2>
     <div class="rsvp-form">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true" loading="lazy">Загрузка…</iframe>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
+        loading="lazy"
+      >
+        Загрузка…
+      </iframe>
     </div>
   </section>
 
