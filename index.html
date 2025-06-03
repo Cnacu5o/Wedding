@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Олжас & Адина — Приглашение на свадьбу</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap');
 
-    /* Глобальное правило */
     * {
       box-sizing: border-box;
     }
@@ -20,42 +19,40 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      width: 100%;
     }
 
     header {
       background: #e7d4c0;
       text-align: center;
       padding: 60px 20px 40px;
-      flex-shrink: 0;
-      width: 100%;
-      box-sizing: border-box;
     }
 
     header h1 {
       margin: 0;
-      font-size: 3em;
+      font-size: 2.5em;
       color: #6a4e42;
     }
 
     header p {
-      font-size: 1.2em;
+      font-size: 1.1em;
       margin-top: 10px;
     }
 
     main {
-      padding: 40px 20px;
+      padding: 30px 15px;
       text-align: center;
       max-width: 900px;
       margin: 0 auto;
       flex-grow: 1;
+      width: 100%;
     }
 
     .countdown {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
+      gap: 20px;
+      margin-bottom: 30px;
       font-family: 'Playfair Display', serif;
       color: #6a4e42;
     }
@@ -64,72 +61,52 @@
       background: #f8f1e7;
       border: 3px solid #6a4e42;
       border-radius: 20px;
-      padding: 15px 25px;
-      min-width: 90px;
+      padding: 12px 20px;
+      min-width: 70px;
       font-weight: 700;
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       line-height: 1.1;
       user-select: none;
-      cursor: default;
       box-shadow: 0 4px 10px rgba(106,78,66,0.3);
     }
 
     .countdown span.label {
       display: block;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-top: 8px;
+      margin-top: 6px;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
     }
 
-    .invite-box {
+    .invite-frame,
+    .date-place {
       border: 3px solid #6a4e42;
       border-radius: 15px;
-      padding: 25px 30px;
-      font-size: 1.5em;
+      padding: 20px;
+      background: #f8f1e7;
+      font-size: 1.2em;
       font-weight: 600;
       color: #6a4e42;
-      margin-bottom: 40px;
-      line-height: 1.5;
-      background: #f8f1e7;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      min-height: 140px;
+      line-height: 1.5;
+      margin: 0 auto 30px;
+      width: 100%;
+      max-width: 700px;
+      word-wrap: break-word;
     }
 
     .date-place {
-      font-size: 1.7em;
-      line-height: 2.2;
-      margin-bottom: 40px;
+      font-style: normal;
       color: #4a3629;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .invite-frame {
-      border: 3px solid #6a4e42;
-      border-radius: 15px;
-      padding: 20px 30px;
-      margin-bottom: 40px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.5em;
-      color: #6a4e42;
-      background: #f8f1e7;
-      line-height: 1.5;
+      line-height: 1.8;
+      font-size: 1.3em;
     }
 
     .map-container {
       width: 100%;
-      height: 400px;
+      height: 300px;
       margin: 30px 0;
       box-shadow: 0 0 15px rgba(106,78,66,0.2);
       border-radius: 10px;
@@ -141,13 +118,12 @@
       background: #0043ad;
       color: #fff;
       text-decoration: none;
-      padding: 14px 30px;
+      padding: 12px 24px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 1.2em;
+      font-size: 1em;
       box-shadow: 0 4px 8px rgba(0,67,173,0.4);
-      margin-bottom: 40px;
-      transition: background-color 0.3s ease;
+      margin-bottom: 30px;
     }
 
     .button-2gis:hover {
@@ -156,41 +132,36 @@
 
     .rsvp-form {
       width: 100%;
-      height: 1000px;
+      height: 800px;
       border: none;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       box-shadow: 0 0 15px rgba(179, 89, 0, 0.2);
       border-radius: 10px;
     }
 
     footer {
       text-align: center;
-      font-size: 1.8em;
+      font-size: 1.3em;
       color: #6a4e42;
       font-family: 'Playfair Display', serif;
-      padding: 25px 10px;
-      flex-shrink: 0;
+      padding: 20px 10px;
       background: #f8f1e7;
-      user-select: none;
-      width: 100%;
-      box-sizing: border-box;
     }
 
     .lang-switch {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       background: #6a4e42;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 10px 18px;
       border-radius: 25px;
       cursor: pointer;
       font-weight: 700;
       font-family: 'Playfair Display', serif;
       box-shadow: 0 4px 10px rgba(106,78,66,0.5);
-      transition: background-color 0.3s ease;
-      z-index: 10;
+      z-index: 1000;
     }
 
     .lang-switch:hover {
@@ -208,7 +179,6 @@
 </header>
 
 <main>
-
   <div class="countdown" id="countdown">
     <div>
       <span id="days">--</span>
@@ -254,9 +224,7 @@
     src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
     frameborder="0"
     marginheight="0"
-    marginwidth="0"
-    >Загрузка…</iframe>
-
+    marginwidth="0">Загрузка…</iframe>
 </main>
 
 <footer>
@@ -311,17 +279,18 @@
   const rsvpFrame = document.querySelector('.rsvp-form');
 
   function updateLabels() {
-    document.querySelectorAll('.countdown .label')[0].textContent = translations[currentLang].days;
-    document.querySelectorAll('.countdown .label')[1].textContent = translations[currentLang].hours;
-    document.querySelectorAll('.countdown .label')[2].textContent = translations[currentLang].minutes;
-    document.querySelectorAll('.countdown .label')[3].textContent = translations[currentLang].seconds;
+    const t = translations[currentLang];
+    document.querySelectorAll('.countdown .label')[0].textContent = t.days;
+    document.querySelectorAll('.countdown .label')[1].textContent = t.hours;
+    document.querySelectorAll('.countdown .label')[2].textContent = t.minutes;
+    document.querySelectorAll('.countdown .label')[3].textContent = t.seconds;
 
-    inviteTextEl.innerHTML = translations[currentLang].inviteText;
-    datePlaceEl.innerHTML = translations[currentLang].datePlace;
-    headerSubtitleEl.textContent = translations[currentLang].headerSubtitle;
-    footerEl.textContent = translations[currentLang].footerText;
-    langToggleBtn.textContent = translations[currentLang].langBtnText;
-    rsvpFrame.src = translations[currentLang].rsvpSrc;
+    inviteTextEl.innerHTML = t.inviteText;
+    datePlaceEl.innerHTML = t.datePlace;
+    headerSubtitleEl.textContent = t.headerSubtitle;
+    footerEl.textContent = t.footerText;
+    langToggleBtn.textContent = t.langBtnText;
+    rsvpFrame.src = t.rsvpSrc;
   }
 
   const weddingDate = new Date('2025-07-19T17:00:00');
@@ -331,7 +300,9 @@
     const diff = weddingDate - now;
 
     if (diff <= 0) {
-      document.getElementById('countdown').textContent = currentLang === 'ru' ? 'Сейчас идёт торжество!' : 'Қазір той өтіп жатыр!';
+      document.getElementById('countdown').textContent = currentLang === 'ru'
+        ? 'Сейчас идёт торжество!'
+        : 'Қазір той өтіп жатыр!';
       clearInterval(timerInterval);
       return;
     }
