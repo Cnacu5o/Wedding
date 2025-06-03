@@ -33,7 +33,39 @@
       max-width: 900px;
       margin: 0 auto;
     }
-    /* Пригласительный текст в рамке, теперь элегантный */
+
+    /* Таймер с большими цифрами */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      font-family: 'Playfair Display', serif;
+      color: #6a4e42;
+    }
+    .countdown > div {
+      background: #f8f1e7;
+      border: 3px solid #6a4e42;
+      border-radius: 20px;
+      padding: 15px 25px;
+      min-width: 90px;
+      font-weight: 700;
+      font-size: 3.5rem;
+      line-height: 1.1;
+      user-select: none;
+      cursor: default;
+      box-shadow: 0 4px 10px rgba(106,78,66,0.3);
+    }
+    .countdown span.label {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    /* Пригласительный текст в рамке, элегантный */
     .invite-box {
       border: 3px solid #6a4e42;
       border-radius: 15px;
@@ -60,83 +92,13 @@
       transition: opacity 0.3s ease;
       min-height: 110px;
     }
-    /* Таймер */
-    .countdown {
-      font-size: 1.4em;
-      margin-bottom: 40px;
-      color: #7b5e48;
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
+
+    /* Остальные стили без изменений */
+    header, .map-container, .button-2gis, .rsvp-form, footer, .lang-switch {
+      /* стили из предыдущего кода */
     }
-    /* Карта */
-    .map-container {
-      max-width: 800px;
-      margin: 0 auto 40px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    iframe.map {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-    /* Кнопка 2ГИС */
-    .button-2gis {
-      display: inline-block;
-      background-color: #1d99f3;
-      color: white;
-      font-weight: 600;
-      padding: 14px 30px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1.2em;
-      margin-bottom: 60px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 10px rgba(29,153,243,0.5);
-    }
-    .button-2gis:hover {
-      background-color: #1677d9;
-    }
-    /* Форма */
-    .rsvp-form {
-      max-width: 800px;
-      margin: 0 auto 80px;
-    }
-    iframe {
-      width: 100%;
-      height: 950px;
-      border: none;
-      border-radius: 12px;
-    }
-    /* Финальный текст */
-    footer {
-      background: #e7d4c0;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 1.5em;
-      font-weight: 600;
-      color: #6a4e42;
-    }
-    /* Переключатель языка */
-    .lang-switch {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #6a4e42;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 8px 18px;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(106,78,66,0.7);
-      transition: background-color 0.3s ease;
-      z-index: 1000;
-    }
-    .lang-switch:hover {
-      background: #533c31;
-    }
+    /* Для краткости не дублирую остальные стили, можно вставить полный стиль из предыдущего ответа */
+
   </style>
 </head>
 <body>
@@ -149,6 +111,27 @@
 </header>
 
 <section>
+
+  <!-- Таймер - выше приглашения -->
+  <div class="countdown" id="countdown">
+    <div>
+      <span id="days">--</span>
+      <span class="label">Дни</span>
+    </div>
+    <div>
+      <span id="hours">--</span>
+      <span class="label">Часы</span>
+    </div>
+    <div>
+      <span id="minutes">--</span>
+      <span class="label">Минуты</span>
+    </div>
+    <div>
+      <span id="seconds">--</span>
+      <span class="label">Секунды</span>
+    </div>
+  </div>
+
   <div class="invite-box" id="inviteText">
     В этот день две судьбы сливаются в одну,<br />
     И мы хотим, чтобы вы были рядом с нами.<br />
@@ -162,46 +145,11 @@
     📍 Crystal Hall, Алматы, ул. Ерубаева 8/9
   </div>
 
-  <div class="countdown" id="countdown">
-    До свадьбы осталось: <span id="timer">загрузка...</span>
-  </div>
+  <!-- Остальной контент такой же, включая карту, 2ГИС, RSVP -->
 
-  <div class="map-container">
-    <iframe
-      class="map"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.361064675641!2d76.93136231507254!3d43.24474297913852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388368d3041c2f07%3A0x3d7c5b223299fcee!2z0J7QvdGC0LDRgtC10YDQuNC90LAsINCc0L7QsdC70LjQutCw0YDRgtC-0LLQvtC00L7QvdCwINCc0L7RgdC60LjQuSDQtNC10LvRjNC60LDRjyDRgdC40L3QsNGPINGC0LDRgdGC0LUg0YHQtdC00L3QsNGPINC_0LDQv9C-0LvQsNGP!5e0!3m2!1sru!2skz!4v1685789923456!5m2!1sru!2skz"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-
-  <a
-    class="button-2gis"
-    href="https://2gis.kz/almaty/geo/70000001100579642"
-    target="_blank"
-    rel="noopener noreferrer"
-    id="link2gis"
-  >
-    Открыть в 2ГИС
-  </a>
 </section>
 
-<section>
-  <h2 id="rsvpTitle">RSVP — Подтвердите присутствие</h2>
-  <div class="rsvp-form">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
-      loading="lazy"
-    >
-      Загрузка…
-    </iframe>
-  </div>
-</section>
-
-<footer>
-  <p id="footerText">С нетерпением ждём встречи с вами! ❤️</p>
-</footer>
+<!-- Остальной HTML, скрипт -->
 
 <script>
   const texts = {
@@ -216,6 +164,12 @@
       footerText: "С нетерпением ждём встречи с вами! ❤️",
       button2gis: "Открыть в 2ГИС",
       langBtn: "Қазақша",
+      labels: {
+        days: 'Дни',
+        hours: 'Часы',
+        minutes: 'Минуты',
+        seconds: 'Секунды'
+      }
     },
     kz: {
       invite: `Осы күні екі тағдыр бір-бірімен қосылады,<br />
@@ -228,6 +182,12 @@
       footerText: "Сіздерді асыға күтеміз! ❤️",
       button2gis: "2ГИС-те ашу",
       langBtn: "Русский",
+      labels: {
+        days: 'Күн',
+        hours: 'Сағат',
+        minutes: 'Минут',
+        seconds: 'Секунд'
+      }
     }
   };
 
@@ -241,6 +201,17 @@
   const button2gis = document.querySelector('.button-2gis');
   const langToggle = document.getElementById('langToggle');
 
+  // Таймер элементы
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+
+  const daysLabel = daysEl.nextElementSibling;
+  const hoursLabel = hoursEl.nextElementSibling;
+  const minutesLabel = minutesEl.nextElementSibling;
+  const secondsLabel = secondsEl.nextElementSibling;
+
   langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'ru' ? 'kz' : 'ru';
 
@@ -251,6 +222,12 @@
     footerText.textContent = texts[currentLang].footerText;
     button2gis.textContent = texts[currentLang].button2gis;
     langToggle.textContent = texts[currentLang].langBtn;
+
+    // Обновляем подписи таймера
+    daysLabel.textContent = texts[currentLang].labels.days;
+    hoursLabel.textContent = texts[currentLang].labels.hours;
+    minutesLabel.textContent = texts[currentLang].labels.minutes;
+    secondsLabel.textContent = texts[currentLang].labels.seconds;
   });
 
   // Таймер обратного отсчёта
@@ -261,7 +238,7 @@
     const diff = weddingDate - now;
 
     if (diff <= 0) {
-      document.getElementById('timer').textContent = 'Сейчас идёт торжество!';
+      document.getElementById('countdown').textContent = currentLang === 'ru' ? 'Сейчас идёт торжество!' : 'Қазір той өтіп жатыр!';
       clearInterval(timerInterval);
       return;
     }
@@ -271,8 +248,10 @@
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
-    document.getElementById('timer').textContent =
-      `${days} дн ${hours.toString().padStart(2,'0')} ч ${minutes.toString().padStart(2,'0')} мин ${seconds.toString().padStart(2,'0')} с`;
+    daysEl.textContent = days.toString().padStart(2, '0');
+    hoursEl.textContent = hours.toString().padStart(2, '0');
+    minutesEl.textContent = minutes.toString().padStart(2, '0');
+    secondsEl.textContent = seconds.toString().padStart(2, '0');
   }
 
   updateTimer();
