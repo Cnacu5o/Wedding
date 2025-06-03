@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Олжас & Адина — Приглашение на свадьбу</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap');
+
     body {
       margin: 0;
       font-family: "Georgia", serif;
@@ -31,7 +33,7 @@
       max-width: 900px;
       margin: 0 auto;
     }
-    /* Пригласительный текст в рамке */
+    /* Пригласительный текст в рамке, теперь элегантный */
     .invite-box {
       border: 3px solid #6a4e42;
       border-radius: 15px;
@@ -40,18 +42,31 @@
       font-weight: 600;
       color: #6a4e42;
       margin-bottom: 40px;
-      line-height: 1.4;
+      line-height: 1.5;
       background: #f8f1e7;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
+      transition: opacity 0.3s ease;
+      min-height: 140px;
     }
     .date-place {
       font-size: 1.7em;
       line-height: 2.2;
       margin-bottom: 40px;
       color: #4a3629;
+      transition: opacity 0.3s ease;
+      min-height: 110px;
+    }
+    /* Таймер */
+    .countdown {
+      font-size: 1.4em;
+      margin-bottom: 40px;
+      color: #7b5e48;
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
     }
     /* Карта */
     .map-container {
@@ -103,56 +118,166 @@
       font-weight: 600;
       color: #6a4e42;
     }
+    /* Переключатель языка */
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #6a4e42;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(106,78,66,0.7);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+    .lang-switch:hover {
+      background: #533c31;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Олжас & Адина</h1>
-    <p>С любовью приглашаем вас на нашу свадьбу</p>
-  </header>
 
-  <section>
-    <div class="invite-box">
-      Дорогие наши гости,<br />
+<button class="lang-switch" id="langToggle">Қазақша</button>
+
+<header>
+  <h1>Олжас & Адина</h1>
+  <p id="header-subtitle">С любовью приглашаем вас на нашу свадьбу</p>
+</header>
+
+<section>
+  <div class="invite-box" id="inviteText">
     В этот день две судьбы сливаются в одну,<br />
-  И мы хотим, чтобы вы были рядом с нами.<br />
-  Приглашаем вас на праздник любви, счастья и новых начал.<br />
-  Пусть этот день останется в памяти навсегда!
-</div>
+    И мы хотим, чтобы вы были рядом с нами.<br />
+    Приглашаем вас на праздник любви, счастья и новых начал.<br />
+    Пусть этот день останется в памяти навсегда!
+  </div>
 
-    <div class="date-place">
-      📅 19 июля 2025 года<br />
-      🕔 Сбор гостей в 17:00<br />
-      📍 Crystal Hall, Алматы, ул. Ерубаева 8/9
-    </div>
+  <div class="date-place" id="datePlace">
+    📅 19 июля 2025 года<br />
+    🕔 Сбор гостей в 17:00<br />
+    📍 Crystal Hall, Алматы, ул. Ерубаева 8/9
+  </div>
 
-    <div class="map-container">
-      <iframe
-        class="map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.361064675641!2d76.93136231507254!3d43.24474297913852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388368d3041c2f07%3A0x3d7c5b223299fcee!2z0J7QvdGC0LDRgtC10YDQuNC90LAsINCc0L7QsdC70LjQutCw0YDRgtC-0LLQvtC00L7QvdCwINCc0L7RgdC60LjQuSDQtNC10LvRjNC60LDRjyDRgdC40L3QsNGPINGC0LDRgdGC0LUg0YHQtdC00L3QsNGPINC_0LDQv9C-0LvQsNGP!5e0!3m2!1sru!2skz!4v1685789923456!5m2!1sru!2skz"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
+  <div class="countdown" id="countdown">
+    До свадьбы осталось: <span id="timer">загрузка...</span>
+  </div>
 
-    <a class="button-2gis" href="https://2gis.kz/almaty/geo/70000001100579642" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a>
-  </section>
+  <div class="map-container">
+    <iframe
+      class="map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.361064675641!2d76.93136231507254!3d43.24474297913852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388368d3041c2f07%3A0x3d7c5b223299fcee!2z0J7QvdGC0LDRgtC10YDQuNC90LAsINCc0L7QsdC70LjQutCw0YDRgtC-0LLQvtC00L7QvdCwINCc0L7RgdC60LjQuSDQtNC10LvRjNC60LDRjyDRgdC40L3QsNGPINGC0LDRgdGC0LUg0YHQtdC00L3QsNGPINC_0LDQv9C-0LvQsNGP!5e0!3m2!1sru!2skz!4v1685789923456!5m2!1sru!2skz"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
 
-  <section>
-    <h2> Пожауйлста подтвердите присутствие :) </h2>
-    <div class="rsvp-form">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
-        loading="lazy"
-      >
-        Загрузка…
-      </iframe>
-    </div>
-  </section>
+  <a
+    class="button-2gis"
+    href="https://2gis.kz/almaty/geo/70000001100579642"
+    target="_blank"
+    rel="noopener noreferrer"
+    id="link2gis"
+  >
+    Открыть в 2ГИС
+  </a>
+</section>
 
-  <footer>
-    <p>С нетерпением ждём встречи с вами! ❤️</p>
-  </footer>
+<section>
+  <h2 id="rsvpTitle">RSVP — Подтвердите присутствие</h2>
+  <div class="rsvp-form">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
+      loading="lazy"
+    >
+      Загрузка…
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  <p id="footerText">С нетерпением ждём встречи с вами! ❤️</p>
+</footer>
+
+<script>
+  const texts = {
+    ru: {
+      invite: `В этот день две судьбы сливаются в одну,<br />
+И мы хотим, чтобы вы были рядом с нами.<br />
+Приглашаем вас на праздник любви, счастья и новых начал.<br />
+Пусть этот день останется в памяти навсегда!`,
+      datePlace: `📅 19 июля 2025 года<br />🕔 Сбор гостей в 17:00<br />📍 Crystal Hall, Алматы, ул. Ерубаева 8/9`,
+      headerSubtitle: "С любовью приглашаем вас на нашу свадьбу",
+      rsvpTitle: "RSVP — Подтвердите присутствие",
+      footerText: "С нетерпением ждём встречи с вами! ❤️",
+      button2gis: "Открыть в 2ГИС",
+      langBtn: "Қазақша",
+    },
+    kz: {
+      invite: `Осы күні екі тағдыр бір-бірімен қосылады,<br />
+Және біз сіздердің жанымызда болғандарыңызды қалаймыз.<br />
+Сіздерді махаббат, бақыт пен жаңа бастамалар мерекесіне шақырамыз.<br />
+Бұл күн мәңгі есімізде қалады!`,
+      datePlace: `📅 19 шілде 2025 жыл<br />🕔 Қонақтарды жинау сағат 17:00-де<br />📍 Crystal Hall, Алматы, Ерубаева көшесі 8/9`,
+      headerSubtitle: "Махаббатпен сіздерді тойымызға шақырамыз",
+      rsvpTitle: "RSVP — Қатысуды растаңыз",
+      footerText: "Сіздерді асыға күтеміз! ❤️",
+      button2gis: "2ГИС-те ашу",
+      langBtn: "Русский",
+    }
+  };
+
+  let currentLang = 'ru';
+
+  const inviteBox = document.getElementById('inviteText');
+  const datePlace = document.getElementById('datePlace');
+  const headerSubtitle = document.getElementById('header-subtitle');
+  const rsvpTitle = document.getElementById('rsvpTitle');
+  const footerText = document.getElementById('footerText');
+  const button2gis = document.querySelector('.button-2gis');
+  const langToggle = document.getElementById('langToggle');
+
+  langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'ru' ? 'kz' : 'ru';
+
+    inviteBox.innerHTML = texts[currentLang].invite;
+    datePlace.innerHTML = texts[currentLang].datePlace;
+    headerSubtitle.textContent = texts[currentLang].headerSubtitle;
+    rsvpTitle.textContent = texts[currentLang].rsvpTitle;
+    footerText.textContent = texts[currentLang].footerText;
+    button2gis.textContent = texts[currentLang].button2gis;
+    langToggle.textContent = texts[currentLang].langBtn;
+  });
+
+  // Таймер обратного отсчёта
+  const weddingDate = new Date('2025-07-19T17:00:00');
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = weddingDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('timer').textContent = 'Сейчас идёт торжество!';
+      clearInterval(timerInterval);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('timer').textContent =
+      `${days} дн ${hours.toString().padStart(2,'0')} ч ${minutes.toString().padStart(2,'0')} мин ${seconds.toString().padStart(2,'0')} с`;
+  }
+
+  updateTimer();
+  const timerInterval = setInterval(updateTimer, 1000);
+</script>
+
 </body>
 </html>
