@@ -38,8 +38,6 @@
       margin: 0 auto;
       flex-grow: 1;
     }
-
-    /* Таймер с большими цифрами */
     .countdown {
       display: flex;
       justify-content: center;
@@ -69,8 +67,6 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
-
-    /* Пригласительный текст в рамке, элегантный */
     .invite-box {
       border: 3px solid #6a4e42;
       border-radius: 15px;
@@ -97,8 +93,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
-    /* Пригласительный текст в рамке перед датой и временем */
     .invite-frame {
       border: 3px solid #6a4e42;
       border-radius: 15px;
@@ -114,19 +108,14 @@
       background: #f8f1e7;
       line-height: 1.5;
     }
-
-    /* Карта */
-   .map-container {
-    width: 100%;
-    height: 400px;
-    margin: 30px 0;
-    box-shadow: 0 0 10px rgba(179, 89, 0, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
+    .map-container {
+      width: 100%;
+      height: 400px;
+      margin: 30px 0;
       box-shadow: 0 0 15px rgba(106,78,66,0.2);
+      border-radius: 10px;
+      overflow: hidden;
     }
-
-    /* Кнопка 2ГИС */
     .button-2gis {
       display: inline-block;
       background: #0043ad;
@@ -143,18 +132,14 @@
     .button-2gis:hover {
       background: #002f75;
     }
-
-    /* Форма RSVP */
     .rsvp-form {
-    width: 100%;
-    height: 1000px;
-    border: none;
-    margin-bottom: 40px;
-    box-shadow: 0 0 15px rgba(179, 89, 0, 0.2);
-    border-radius: 10px;
+      width: 100%;
+      height: 1000px;
+      border: none;
+      margin-bottom: 40px;
+      box-shadow: 0 0 15px rgba(179, 89, 0, 0.2);
+      border-radius: 10px;
     }
-
-    /* Нижняя подпись */
     footer {
       text-align: center;
       font-size: 1.8em;
@@ -165,8 +150,6 @@
       background: #f8f1e7;
       user-select: none;
     }
-
-    /* Переключатель языка */
     .lang-switch {
       position: fixed;
       top: 20px;
@@ -186,6 +169,17 @@
     .lang-switch:hover {
       background: #4a3629;
     }
+
+    /* 🌟 Добавлено: Картинка в левом нижнем углу */
+    .corner-image {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 120px;
+      opacity: 0.85;
+      z-index: 5;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -198,28 +192,13 @@
 </header>
 
 <main>
-
-  <!-- Таймер -->
   <div class="countdown" id="countdown">
-    <div>
-      <span id="days">--</span>
-      <span class="label">Дни</span>
-    </div>
-    <div>
-      <span id="hours">--</span>
-      <span class="label">Часы</span>
-    </div>
-    <div>
-      <span id="minutes">--</span>
-      <span class="label">Минуты</span>
-    </div>
-    <div>
-      <span id="seconds">--</span>
-      <span class="label">Секунды</span>
-    </div>
+    <div><span id="days">--</span><span class="label">Дни</span></div>
+    <div><span id="hours">--</span><span class="label">Часы</span></div>
+    <div><span id="minutes">--</span><span class="label">Минуты</span></div>
+    <div><span id="seconds">--</span><span class="label">Секунды</span></div>
   </div>
 
-  <!-- Пригласительный текст в рамке -->
   <div class="invite-frame" id="inviteText">
     В этот день две судьбы сливаются в одну,<br />
     И мы хотим, чтобы вы были рядом с нами.<br />
@@ -227,43 +206,37 @@
     Пусть этот день останется в памяти навсегда!
   </div>
 
-  <!-- Дата и место -->
   <div class="date-place" id="datePlace">
     📅 19 июля 2025 года<br />
     🕔 Сбор гостей в 17:00<br />
     📍 Crystal Hall, Алматы, ул. Ерубаева 8/9
   </div>
 
-  <!-- Карта Google Maps -->
   <div class="map-container">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.639210135816!2d76.85923081513722!3d43.15806677914647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x388367b0651806ab%3A0x7ef2d597be061894!2z0JrQvtC70LDRhtCw!5e0!3m2!1sru!2skz!4v1685795600000!5m2!1sru!2skz"
       width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
-  <!-- Кнопка 2ГИС -->
   <a class="button-2gis" href="https://2gis.kz/almaty/geo/70000001100579642" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a>
 
-  <!-- Форма RSVP -->
   <iframe
     class="rsvp-form"
     src="https://docs.google.com/forms/d/e/1FAIpQLSfNbcaHTQ-AwSrIodswJtKRLOysJEqnrgIiYOblxn8I5XKZeA/viewform?embedded=true"
     frameborder="0"
     marginheight="0"
-    marginwidth="0"
-    >Загрузка…</iframe>
-
+    marginwidth="0">Загрузка…</iframe>
 </main>
 
 <footer>
   С нетерпением ждём встречи с вами! ❤️
 </footer>
 
-<script>
-  // Текущий язык: 'ru' или 'kz'
-  let currentLang = 'ru';
+<!-- 🌟 Картинка в левом нижнем углу -->
+<img src="silhouettes.png" alt="Силуэты" class="corner-image" />
 
-  // Элементы, которые нужно переводить
+<script>
+  let currentLang = 'ru';
   const translations = {
     ru: {
       days: 'Дни',
@@ -322,9 +295,7 @@
     rsvpFrame.src = translations[currentLang].rsvpSrc;
   }
 
-  // Таймер обратного отсчёта
   const weddingDate = new Date('2025-07-19T17:00:00');
-
   function updateTimer() {
     const now = new Date();
     const diff = weddingDate - now;
@@ -355,7 +326,6 @@
   });
 
   updateLabels();
-
 </script>
 
 </body>
